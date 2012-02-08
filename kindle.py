@@ -10,8 +10,12 @@ From = 'kindle@eumacro.csie.org'
 
 class index:
     def GET(self):
-        send2kindle(**web.input())
-        return 'ok'
+        i = web.input()
+        if i.to == 'YOURNAME@free.kindle.com':
+            return 'Change %s in bookmarklet to your address' % i.to
+        i.body = reformat(i.body)
+        send2kindle(**i)
+        return '%s sent to %s' % (i.title, i.to)
 
 def reformat(s):
     s = re.sub('</tr>', '\n', s)
@@ -23,7 +27,7 @@ def send2kindle(title, body, to):
     msg = MIMEMultipart()
     msg['From'] = From
     msg['To'] = to
-    att = MIMEText(reformat(body).encode('utf-8'), 'plain', 'utf8')
+    att = MIMEText(body.encode('utf-8'), 'plain', 'utf8')
     att.add_header('Content-Disposition', 'attachment', filename=title+'.txt')
     msg.attach(att)
     s = smtplib.SMTP('localhost')
