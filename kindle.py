@@ -1,5 +1,19 @@
 #!/usr/bin/python
 
+"""
+Dependency: web.py, mod_wsgi for apache(optional)
+
+Add to /etc/apache2/httpd.conf:
+
+    WSGIScriptAlias /kindle /home/kindle/cgi-bin/kindle.py
+    AddType text/html .py
+    <Directory "/home/kindle/cgi-bin">
+        Order deny,allow
+        Allow from all
+    </Directory>
+    LimitRequestLine 32768
+"""
+
 from email.mime.text import MIMEText
 from email.mime.multipart import MIMEMultipart
 import smtplib
@@ -32,5 +46,5 @@ def send2kindle(title, body, to):
     s.quit()
 
 app = web.application(('/','index'), globals())
-application = app.wsgifunc()
+application = app.wsgifunc() # or standalone without mod_wsgi: app.run()
 
