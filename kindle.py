@@ -13,15 +13,12 @@ class index:
         i = web.input()
         if i.to == 'YOURNAME@free.kindle.com':
             return 'Change %s in bookmarklet to your address' % i.to
-        i.body = reformat(i.body)
+        if i.body.strip() == '':
+            return 'Select text to be sent to kindle and click the bookmarklet!'
+        if 'title' not in i:
+            i.title, i.body = i.body.split('\n', 1)
         send2kindle(**i)
-        return '<pre>%s sent to %s\n\n%s</pre>' % (i.title, i.to, i.body)
-
-def reformat(s):
-    s = re.sub('</tr>', '\n', s)
-    s = re.sub('<[^>]+>', '', s)
-    s = re.sub('&nbsp;', '', s)
-    return s
+        return '<pre>Done!\nSent to: %s\nTitle: %s\nBody: %s</pre>' % (i.to, i.title, i.body)
 
 def send2kindle(title, body, to):
     msg = MIMEMultipart()
