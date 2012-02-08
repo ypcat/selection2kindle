@@ -5,6 +5,6 @@ Install:
 4. click the bookmarklet just created on bookmark bar
 
 --------begin bookmarklet--------
-javascript:void(window.open('http://eumacro.csie.org:8080/?to=YOURNAME@free.kindle.com&title='+document.getElementsByClassName('statTextBig')[0].textContent.split('%20')[3]+'&body='+encodeURIComponent(document.getElementsByClassName('problemText')[0].innerHTML)));
+javascript:void(window.open('http://eumacro.csie.org/kindle/?to=YOURNAME@free.kindle.com&title='+document.getElementsByClassName('statTextBig')[0].textContent.split('%20')[3]+'&body='+encodeURIComponent(document.getElementsByClassName('problemText')[0].innerHTML)));
 --------end of bookmarklet-------
 
