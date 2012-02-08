@@ -32,7 +32,7 @@ class index:
         if 'title' not in i:
             i.title, i.body = i.body.split('\n', 1)
         send2kindle(**i)
-        return '<pre>Done!\nSent to: %s\nTitle: %s\nBody: %s</pre>' % (i.to, i.title, i.body)
+        return '<pre>Done! You can close this window now.\nSent to: %s\nTitle: %s\nBody: %s</pre>' % (i.to, i.title, i.body)
 
 def send2kindle(title, body, to):
     msg = MIMEMultipart()
