@@ -15,7 +15,7 @@ class index:
             return 'Change %s in bookmarklet to your address' % i.to
         i.body = reformat(i.body)
         send2kindle(**i)
-        return '%s sent to %s' % (i.title, i.to)
+        return '<pre>%s sent to %s\n\n%s</pre>' % (i.title, i.to, i.body)
 
 def reformat(s):
     s = re.sub('</tr>', '\n', s)

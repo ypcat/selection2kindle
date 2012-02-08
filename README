@@ -1,10 +1,10 @@
 Install:
-1. copy and drag the bookmarklet text to bookmark bar
-2. change YOURNAME to your kindle email account
-3. visit page like http://community.topcoder.com/stat?c=problem_statement&pm=11664&rd=14550
-4. click the bookmarklet just created on bookmark bar
+1. Copy bookmarklet text below and drag to bookmark bar
+2. Change YOURNAME to your kindle email account
+3. Add "kindle@eumacro.csie.org" to your approved email list at https://www.amazon.com/gp/digital/fiona/manage?ie=UTF8&*Version*=1&*entries*=0&#pdocSettings
+4. Click the bookmarklet just created on bookmark bar from pages like http://community.topcoder.com/stat?c=problem_statement&pm=11664&rd=14550
 
---------begin bookmarklet--------
+--------Begin bookmarklet--------
 javascript:void(window.open('http://eumacro.csie.org/kindle/?to=YOURNAME@free.kindle.com&title='+document.getElementsByClassName('statTextBig')[0].textContent.split('%20')[3]+'&body='+encodeURIComponent(document.getElementsByClassName('problemText')[0].innerHTML)));
---------end of bookmarklet-------
+--------End of bookmarklet-------
 
